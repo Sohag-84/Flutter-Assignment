@@ -1,11 +1,15 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_task/controllers/order_controller.dart';
 import 'package:flutter_task/widgets/custom_appbar.dart';
 import 'package:flutter_task/widgets/custom_button.dart';
+import 'package:get/get.dart';
 
 class ProductOrderScreen extends StatelessWidget {
-  const ProductOrderScreen({super.key});
+  ProductOrderScreen({super.key});
+
+  final OrderController orderController = Get.put(OrderController());
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +17,20 @@ class ProductOrderScreen extends StatelessWidget {
       appBar: customAppBar(title: "Order Submit"),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: customButton(onTap: () {}, btnName: "Submit Order"),
+        child: customButton(
+            onTap: () {
+              orderController.submitOrder();
+            },
+            btnName: "Submit Order"),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextFormField(
+              controller: orderController.shopNameController,
+              key: orderController.shopNameFormKey,
+              validator: orderController.shopNameValidator,
               decoration: InputDecoration(
                 labelText: 'Shop Name',
                 border: OutlineInputBorder(),
@@ -27,7 +38,10 @@ class ProductOrderScreen extends StatelessWidget {
             ),
             SizedBox(height: 12.0),
             TextFormField(
-              keyboardType: TextInputType.number,
+              controller: orderController.phoneNumberController,
+              key: orderController.phoneNumberFormKey,
+              validator: orderController.phoneNumberValidator,
+              keyboardType: TextInputType.phone,
               decoration: InputDecoration(
                 labelText: 'Phone Number',
                 border: OutlineInputBorder(),
@@ -38,8 +52,11 @@ class ProductOrderScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextFormField(
+                    controller: orderController.itemNameController,
+                    key: orderController.itemNameFormKey,
+                    validator: orderController.itemNameValidator,
                     decoration: InputDecoration(
-                      labelText: 'Item Name',
+                      labelText: 'Product Name',
                       border: OutlineInputBorder(),
                     ),
                   ),
@@ -47,6 +64,9 @@ class ProductOrderScreen extends StatelessWidget {
                 SizedBox(width: 12.0),
                 Expanded(
                   child: TextFormField(
+                    controller: orderController.quantityController,
+                    key: orderController.quantityFormKey,
+                    validator: orderController.quantityValidator,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: 'Quantity',
@@ -60,20 +80,25 @@ class ProductOrderScreen extends StatelessWidget {
             SizedBox(
               width: 150,
               child: customButton(
-                onTap: () {},
+                onTap: () {
+                  orderController.addOrder();
+                },
                 btnName: "Add Order",
                 btnHeight: 40,
               ),
             ),
             SizedBox(height: 12.0),
             Expanded(
-              child: ListView.builder(
-                itemCount: 23,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text("Table (1)"),
-                  );
-                },
+              child: Obx(
+                () => ListView.builder(
+                  itemCount: orderController.items.length,
+                  itemBuilder: (context, index) {
+                    final item = orderController.items[index];
+                    return ListTile(
+                      title: Text('${item.itemName} (${item.quantity})'),
+                    );
+                  },
+                ),
               ),
             ),
           ],
