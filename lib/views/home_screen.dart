@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_task/controllers/qr_code_controller.dart';
+import 'package:flutter_task/views/product/order_screen.dart';
 import 'package:flutter_task/widgets/custom_appbar.dart';
 import 'package:flutter_task/widgets/custom_button.dart';
 import 'package:get/get.dart';
@@ -29,7 +30,12 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: 20),
               customButton(onTap: () {}, btnName: "Geo Punch Submit"),
               SizedBox(height: 20),
-              customButton(onTap: () {}, btnName: "Submit Order"),
+              customButton(
+                onTap: () {
+                  Get.to(() => ProductOrderScreen());
+                },
+                btnName: "Submit Order",
+              ),
             ],
           ),
         ),
