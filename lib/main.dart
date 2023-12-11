@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task/constant/colors.dart';
 import 'package:flutter_task/views/home_screen.dart';
 import 'package:get/get.dart';
 
@@ -17,16 +18,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-        appBarTheme: const AppBarTheme(
+        appBarTheme: AppBarTheme(
           backgroundColor: Colors.blue,
           centerTitle: true,
-          titleTextStyle: TextStyle(
+          iconTheme: IconThemeData(color: whiteColor),
+          titleTextStyle: const TextStyle(
             color: Colors.white,
             fontSize: 25,
           ),
         ),
       ),
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }

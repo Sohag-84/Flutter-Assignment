@@ -1,11 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_task/controllers/qr_code_controller.dart';
 import 'package:flutter_task/widgets/custom_appbar.dart';
 import 'package:flutter_task/widgets/custom_button.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+  final QrCodeController controller = Get.put(QrCodeController());
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,12 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              customButton(onTap: () {}, btnName: "Scan Qr Code"),
+              customButton(
+                onTap: () {
+                  controller.scanQrCode();
+                },
+                btnName: "Scan Qr Code",
+              ),
               SizedBox(height: 20),
               customButton(onTap: () {}, btnName: "Geo Punch Submit"),
               SizedBox(height: 20),
