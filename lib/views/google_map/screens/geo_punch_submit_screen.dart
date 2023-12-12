@@ -9,6 +9,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import 'widgets/modal_bottom_sheet.dart';
+
 class GeoPunchSubmitScreen extends StatefulWidget {
   const GeoPunchSubmitScreen({super.key});
 
@@ -95,15 +97,27 @@ class _GeoPunchSubmitScreenState extends State<GeoPunchSubmitScreen> {
                   ),
           ),
           if (_currentPosition != null && isWithinRadius)
-            customButton(
-              onTap: () {
-                LocationPunchServices().submitPunch(
-                  latitude: _currentPosition!.latitude,
-                  longitude: _currentPosition!.longitude,
-                );
-              },
-              btnName: "Submit Punch",
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: customButton(
+                onTap: () {
+                  LocationPunchServices().submitPunch(
+                    latitude: _currentPosition!.latitude,
+                    longitude: _currentPosition!.longitude,
+                  );
+                },
+                btnName: "Save Location",
+              ),
             ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: customButton(
+              onTap: () {
+                modalBottomSheet(context);
+              },
+              btnName: "Show Location List",
+            ),
+          ),
         ],
       ),
     );
