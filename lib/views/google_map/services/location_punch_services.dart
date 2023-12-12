@@ -8,17 +8,16 @@ class LocationPunchServices {
     final response = await http.post(
       Uri.parse("https://www.akijpipes.com/api/lat-long"),
       body: {
-        "user_id": "111",
+        "user_id": "2",
         "lat": latitude.toString(),
         "long": longitude.toString()
       },
     );
-
-    if (response.statusCode == 200) {
+    if (response.statusCode == 201) {
       log("Punch submitted successfully");
       log("Response data: ${response.body}");
     } else {
-      log("Error in submitting punch");
+      log("Error in submitting punch.${response.statusCode}");
     }
   }
 
