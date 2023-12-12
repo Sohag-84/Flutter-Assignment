@@ -33,6 +33,7 @@ class ProductOrderScreen extends StatelessWidget {
               validator: orderController.shopNameValidator,
               decoration: InputDecoration(
                 labelText: 'Shop Name',
+                contentPadding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                 border: OutlineInputBorder(),
               ),
             ),
@@ -44,37 +45,32 @@ class ProductOrderScreen extends StatelessWidget {
               keyboardType: TextInputType.phone,
               decoration: InputDecoration(
                 labelText: 'Phone Number',
+                contentPadding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 12.0),
-            Row(
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    controller: orderController.itemNameController,
-                    key: orderController.itemNameFormKey,
-                    validator: orderController.itemNameValidator,
-                    decoration: InputDecoration(
-                      labelText: 'Product Name',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 12.0),
-                Expanded(
-                  child: TextFormField(
-                    controller: orderController.quantityController,
-                    key: orderController.quantityFormKey,
-                    validator: orderController.quantityValidator,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      labelText: 'Quantity',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                ),
-              ],
+            TextFormField(
+              controller: orderController.itemNameController,
+              key: orderController.itemNameFormKey,
+              validator: orderController.itemNameValidator,
+              decoration: InputDecoration(
+                labelText: 'Product Name',
+                contentPadding: EdgeInsets.fromLTRB(10, 2, 10, 2),
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 12.0),
+            TextFormField(
+              controller: orderController.quantityController,
+              key: orderController.quantityFormKey,
+              validator: orderController.quantityValidator,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: 'Quantity',
+                contentPadding: EdgeInsets.fromLTRB(10, 2, 10, 2),
+                border: OutlineInputBorder(),
+              ),
             ),
             SizedBox(height: 15.0),
             SizedBox(

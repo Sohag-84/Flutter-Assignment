@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_task/controllers/qr_code_controller.dart';
+import 'package:flutter_task/views/google_map/screens/geo_punch_submit_screen.dart';
 import 'package:flutter_task/views/product/order_screen.dart';
 import 'package:flutter_task/widgets/custom_appbar.dart';
 import 'package:flutter_task/widgets/custom_button.dart';
@@ -28,7 +29,11 @@ class HomeScreen extends StatelessWidget {
                 btnName: "Scan Qr Code",
               ),
               SizedBox(height: 20),
-              customButton(onTap: () {}, btnName: "Geo Punch Submit"),
+              customButton(
+                  onTap: () {
+                    Get.to(() => GeoPunchSubmitScreen());
+                  },
+                  btnName: "Geo Punch Submit"),
               SizedBox(height: 20),
               customButton(
                 onTap: () {
