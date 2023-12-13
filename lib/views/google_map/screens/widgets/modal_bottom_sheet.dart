@@ -13,7 +13,7 @@ Future<dynamic> modalBottomSheet(BuildContext context) {
         children: [
           SizedBox(height: 10),
           Text(
-            "Your Location List",
+            "Your(id: 84) Location List",
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w500,
@@ -44,14 +44,14 @@ Future<dynamic> modalBottomSheet(BuildContext context) {
                               child: Text(data.id.toString()),
                             ),
                             title: Text(
-                              data.lat.toString(),
+                              "lat: ${data.lat}",
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                             subtitle: Text(
-                              data.long.toString(),
+                              "long: ${data.long}",
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,

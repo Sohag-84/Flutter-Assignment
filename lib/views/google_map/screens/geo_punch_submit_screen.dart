@@ -19,7 +19,6 @@ class GeoPunchSubmitScreen extends StatefulWidget {
 }
 
 class _GeoPunchSubmitScreenState extends State<GeoPunchSubmitScreen> {
-  GoogleMapController? mapController;
   Position? _currentPosition;
   bool isWithinRadius = false;
 
@@ -81,9 +80,6 @@ class _GeoPunchSubmitScreenState extends State<GeoPunchSubmitScreen> {
                       ),
                       zoom: 15,
                     ),
-                    onMapCreated: (GoogleMapController controller) {
-                      mapController = controller;
-                    },
                     markers: {
                       Marker(
                         markerId: MarkerId("currentLocation"),
