@@ -48,8 +48,8 @@ class _GeoPunchSubmitScreenState extends State<GeoPunchSubmitScreen> {
   }
 
   bool _isWithinRadius(double latitude, double longitude) {
-    double akijHouseLat = 37.7749;
-    double akijHouseLong = -122.4194;
+    double akijHouseLat = 23.7695739;
+    double akijHouseLong = 90.4103459;
 
     double distance = Geolocator.distanceBetween(
       latitude,
